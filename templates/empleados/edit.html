@@ -1,0 +1,54 @@
+{% include 'header.html' %}
+Formulario para Editar
+{% for employe in employes %}
+<form method="post" action="/update" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            Edit Employe
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Data Employe</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtname">Name:</label>
+                    <input id="txtname" value="{{employe[1]}}" class="form-control" type="text" name="txtname">
+                </div>
+                
+                <input type="hidden" value="{{employe[0]}}" name="txtid" id="txtid">
+                <br>
+
+                <div class="form-group">
+                    <label for="txtemail">Email:</label>
+                    <input id="txtemail" value="{{employe[2]}}" class="form-control" type="text" name="txtemail">
+                </div>
+
+                <br>
+                
+                <div class="form-group">
+                    <label for="txtphoto">Photo:</label>
+                    <br>
+                    <img class="img-thumbnail" width="100" src="{{url_for('uploads',nombreFoto=employe[3])}}" alt="">
+                    <br>
+                    <input id="txtphoto" class="form-control" type="file" name="txtphoto">
+                </div>
+
+                <br>
+                
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Update">
+                    <a href="{{url_for("index")}}" class="btn btn-primary">Back</a>
+                </div>
+              
+                <br>
+
+            </p>
+        </div>
+    </div>
+
+    
+    
+</form>
+{% endfor %}
+{% include 'footer.html' %}

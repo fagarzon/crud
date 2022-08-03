@@ -1,0 +1,53 @@
+{% include 'header.html' %}
+
+{% with messages= get_flashed_messages() %}
+
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endwith %}
+
+<br>
+<form method="post" action="/store" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+            Ingresar Empleados
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos del Empleado</h5>
+            <p class="card-text">
+
+                <div class="form-group">
+                    <label for="txtname">Name:</label>
+                    <input id="txtname" class="form-control" type="text" name="txtname">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="txtemail">Email:</label>
+                    <input id="txtemail" class="form-control" type="text" name="txtemail">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="txtphoto">Photo:</label>
+                    <input id="txtphoto" class="form-control" type="file" name="txtphoto">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Add">
+                    <a href="{{url_for("index")}}" class="btn btn-primary">Back</a>
+                </div>
+                <br>
+                <br>
+                
+            </p>
+        </div>
+    </div>
+    
+</form>
+{% include 'footer.html' %}
